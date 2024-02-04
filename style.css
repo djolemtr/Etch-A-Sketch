@@ -43,8 +43,8 @@ h1 {
 }
 
 .container {
-    width: 505px;
-    height: 505px;
+    width: 500.5px; /*0.5px added because border creates additional space to divs*/
+    height: 500.5px;
     display: flex;
     flex-wrap: wrap;
     border: 5px solid yellow;
