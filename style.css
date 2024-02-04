@@ -16,6 +16,7 @@ h1 {
     color: yellow;
 }
 
+.colorMode,
 .res {
     display: flex;
     align-items: center;
@@ -27,9 +28,15 @@ h1 {
 
 #resetButton {
     margin-left: auto;
+    background-color: rgba(198, 65, 65, 0.597);
 }
 
-.res>button {
+#resetButton:hover{
+    background-color: rgb(198, 65, 65);
+}
+
+
+button {
     font-family: 'Londrina Solid', sans-serif;
     margin: 0 0.5rem;
     color: yellow;
@@ -38,7 +45,7 @@ h1 {
     padding: 0 1rem;
 }
 
-.res>button:hover {
+button:hover {
     background-color: #8295ae;
 }
 

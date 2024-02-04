@@ -45,7 +45,7 @@ const updateGrid = function (size) {
                     element.style.border = "none";
                 }
             },
-        );
+        )
     });
 
     document.addEventListener("mouseup", () => {
