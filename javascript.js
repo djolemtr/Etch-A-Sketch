@@ -28,18 +28,21 @@ const updateGrid = function (size) {
         container.appendChild(element);
         element.style.width = squareSize + "px";
         element.style.height = squareSize + "px";
+
         element.addEventListener(
             "mousedown",
             () => {
                 isDrawing = true;
-                element.style.backgroundColor = "white";
+                element.style.backgroundColor = "yellow";
+                element.style.border = "none";
             },
         );
         element.addEventListener(
             "mouseenter",
             () => {
                 if (isDrawing) {
-                    element.style.backgroundColor = "white";
+                    element.style.backgroundColor = "yellow";
+                    element.style.border = "none";
                 }
             },
         );
@@ -53,6 +56,7 @@ const updateGrid = function (size) {
 updateGrid(currentResolution);
 
 btnResSmall.addEventListener("click", function () {
+    currentResolution = 16;
     updateGrid(16);
 });
 
