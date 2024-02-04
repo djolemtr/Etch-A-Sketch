@@ -2,5 +2,5 @@
 
 [> PLAY](https://djolemtr.github.io/Etch-A-Sketch/)
 
-![Screenshot from 2024-02-04 20-45-08](https://github.com/djolemtr/Etch-A-Sketch/assets/113414071/2a5cc2c5-99e9-4020-a37f-70db8a876282)
+![ezgif-2-bdcca972fa](https://github.com/djolemtr/Etch-A-Sketch/assets/113414071/fc16eefd-1041-433b-ba99-6d6471f4e4e1)
 
