@@ -1,15 +1,71 @@
 const container = document.querySelector(".container");
+const btnResSmall = document.querySelector(".resSmall");
+const btnResMedium = document.querySelector(".resMedium");
+const btnResLarge = document.querySelector(".resLarge");
+const resetButton = document.querySelector("#resetButton");
 
-let div16 = [];
+let squares = [];
+let isDrawing = false;
+let currentResolution = 16;
 
-for (let i = 1; i <= 256; i++) {
-
-    const div = document.createElement("div");
-    div.className = "square"
-    div16.push(div);
-
+const resetGrid = function () {
+    container.innerHTML = '';
+    squares = [];
 }
 
-div16.forEach(element => {
-    container.appendChild(element);
+const makeGrid = function (size) {
+    for (let i = 1; i <= size * size; i++) {
+        const div = document.createElement("div");
+        squares.push(div);
+    }
+}
+
+const updateGrid = function (size) {
+    resetGrid();
+    makeGrid(size);
+    const squareSize = 500 / size; // Adjust square size based on grid size
+    squares.forEach(element => {
+        container.appendChild(element);
+        element.style.width = squareSize + "px";
+        element.style.height = squareSize + "px";
+        element.addEventListener(
+            "mousedown",
+            () => {
+                isDrawing = true;
+                element.style.backgroundColor = "white";
+            },
+        );
+        element.addEventListener(
+            "mouseenter",
+            () => {
+                if (isDrawing) {
+                    element.style.backgroundColor = "white";
+                }
+            },
+        );
+    });
+
+    document.addEventListener("mouseup", () => {
+        isDrawing = false;
+    });
+}
+
+updateGrid(currentResolution);
+
+btnResSmall.addEventListener("click", function () {
+    updateGrid(16);
+});
+
+btnResMedium.addEventListener("click", function () {
+    currentResolution = 32;
+    updateGrid(32);
+});
+
+btnResLarge.addEventListener("click", function () {
+    currentResolution = 64;
+    updateGrid(64);
+});
+
+resetButton.addEventListener("click", function () {
+    updateGrid(currentResolution);
 });
