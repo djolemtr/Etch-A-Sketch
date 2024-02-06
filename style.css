@@ -13,7 +13,7 @@ body {
 
 h1 {
     font-family: 'Rubik Doodle Shadow', system-ui;
-    color: yellow;
+    color: #ffff00;
 }
 
 .colorMode,
@@ -35,7 +35,6 @@ h1 {
     background-color: rgb(198, 65, 65);
 }
 
-
 button {
     font-family: 'Londrina Solid', sans-serif;
     margin: 0 0.5rem;
@@ -56,12 +55,11 @@ button:hover {
     flex-wrap: wrap;
     border: 5px solid yellow;
     border-radius: 7px;
+    background-color: white;
 }
 
 .container>div {
-    width: calc(100% / 16);
-    height: calc(100% / 16);
-    border: 1px solid rgba(250, 246, 12, 0.392);
+    border: none;
     box-sizing: border-box;
 }
 

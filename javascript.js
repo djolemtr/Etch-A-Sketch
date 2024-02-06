@@ -1,12 +1,25 @@
 const container = document.querySelector(".container");
+
+/*resolution buttons*/
 const btnResSmall = document.querySelector(".resSmall");
 const btnResMedium = document.querySelector(".resMedium");
 const btnResLarge = document.querySelector(".resLarge");
+
 const resetButton = document.querySelector("#resetButton");
+
+/*color buttons*/
+const colorPicker = document.querySelector(".colorPicker");
+colorPicker.value = "#ffff00";
+const randomColor = document.querySelector(".randomColor");
 
 let squares = [];
 let isDrawing = false;
 let currentResolution = 16;
+let currentColor = "yellow";
+
+const setColor = function (element, color) {
+    element.style.backgroundColor = color;
+}
 
 const resetGrid = function () {
     container.innerHTML = '';
@@ -33,16 +46,15 @@ const updateGrid = function (size) {
             "mousedown",
             () => {
                 isDrawing = true;
-                element.style.backgroundColor = "yellow";
-                element.style.border = "none";
+                setColor(element, currentColor);
+
             },
         );
         element.addEventListener(
             "mouseenter",
             () => {
                 if (isDrawing) {
-                    element.style.backgroundColor = "yellow";
-                    element.style.border = "none";
+                    setColor(element, currentColor);
                 }
             },
         )
@@ -52,6 +64,8 @@ const updateGrid = function (size) {
         isDrawing = false;
     });
 }
+
+/*resolution functions*/
 
 updateGrid(currentResolution);
 
@@ -72,4 +86,58 @@ btnResLarge.addEventListener("click", function () {
 
 resetButton.addEventListener("click", function () {
     updateGrid(currentResolution);
+});
+
+/*color functions*/
+
+function getRandomColor() {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+randomColor.addEventListener("click", function () {
+
+    squares.forEach(square => {
+        square.addEventListener("mousedown", () => {
+            if (isDrawing) {
+                setColor(square, getRandomColor());
+            }
+        });
+    });
+
+    squares.forEach(square => {
+        square.addEventListener("mouseenter", () => {
+            if (isDrawing) {
+                setColor(square, getRandomColor());
+            }
+        });
+    });
+
+});
+
+colorPicker.addEventListener("change", function () {
+
+    const selectedColor = colorPicker.value;
+    currentColor = colorPicker.value;
+
+    squares.forEach(square => {
+        square.addEventListener("mousedown", () => {
+            if (isDrawing) {
+                setColor(square, selectedColor);
+            }
+        });
+    });
+
+    squares.forEach(square => {
+        square.addEventListener("mouseenter", () => {
+            if (isDrawing) {
+                setColor(square, selectedColor);
+            }
+        });
+    });
+
 });
