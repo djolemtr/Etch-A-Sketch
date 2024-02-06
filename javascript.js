@@ -8,18 +8,17 @@ const btnResLarge = document.querySelector(".resLarge");
 const resetButton = document.querySelector("#resetButton");
 
 /*color buttons*/
-const defaultColor = document.querySelector(".defaultColor");
 const colorPicker = document.querySelector(".colorPicker");
+colorPicker.value = "#ffff00";
 const randomColor = document.querySelector(".randomColor");
-
 
 let squares = [];
 let isDrawing = false;
 let currentResolution = 16;
+let currentColor = "yellow";
 
 const setColor = function (element, color) {
     element.style.backgroundColor = color;
-    element.style.border = "none";
 }
 
 const resetGrid = function () {
@@ -47,7 +46,7 @@ const updateGrid = function (size) {
             "mousedown",
             () => {
                 isDrawing = true;
-                setColor(element, "yellow");
+                setColor(element, currentColor);
 
             },
         );
@@ -55,7 +54,7 @@ const updateGrid = function (size) {
             "mouseenter",
             () => {
                 if (isDrawing) {
-                    setColor(element, "yellow");
+                    setColor(element, currentColor);
                 }
             },
         )
@@ -100,28 +99,6 @@ function getRandomColor() {
     return color;
 }
 
-defaultColor.addEventListener("click", function () {
-
-    squares.forEach(square => {
-        square.addEventListener("mousedown", () => {
-            if (isDrawing) {
-                setColor(square, "yellow");
-            }
-        });
-    });
-
-    squares.forEach(square => {
-        square.addEventListener("mouseenter", () => {
-            if (isDrawing) {
-                setColor(square, "yellow");
-            }
-        });
-    });
-
-    defaultColor.classList.toggle("active");
-    randomColor.classList.remove("active");
-});
-
 randomColor.addEventListener("click", function () {
 
     squares.forEach(square => {
@@ -140,13 +117,12 @@ randomColor.addEventListener("click", function () {
         });
     });
 
-    randomColor.classList.toggle("active");
-    defaultColor.classList.remove("active");
 });
 
 colorPicker.addEventListener("change", function () {
 
     const selectedColor = colorPicker.value;
+    currentColor = colorPicker.value;
 
     squares.forEach(square => {
         square.addEventListener("mousedown", () => {
@@ -163,8 +139,5 @@ colorPicker.addEventListener("change", function () {
             }
         });
     });
-
-    defaultColor.classList.remove("active");
-    randomColor.classList.remove("active");
 
 });

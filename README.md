@@ -2,9 +2,5 @@
 
 [> PLAY](https://djolemtr.github.io/Etch-A-Sketch/)
 
-To be implemented:
-- color mode
-- undo and redo buttons
-
-![Screenshot from 2024-02-04 20-45-08](https://github.com/djolemtr/Etch-A-Sketch/assets/113414071/2a5cc2c5-99e9-4020-a37f-70db8a876282)
+![Screenshot from 2024-02-06 20-22-21](https://github.com/djolemtr/Etch-A-Sketch/assets/113414071/d18900dc-eb16-45ab-92ae-054dc6b25d52)
 
